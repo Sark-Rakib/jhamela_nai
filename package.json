@@ -1,17 +1,48 @@
 {
   "name": "jhamela-nai",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
+  "description": "Jhamela Nai — প্রতিদিনের কাজ, এক জায়গায় সহজ সমাধান।",
+  "workspaces": [
+    "server"
+  ],
   "scripts": {
     "dev": "next dev",
+    "dev:web": "next dev",
+    "dev:api": "npm run dev --workspace @jhamela-nai/server",
+    "dev:all": "concurrently -n web,api -c cyan,magenta \"npm:dev:web\" \"npm:dev:api\"",
     "build": "next build",
+    "build:api": "npm run build --workspace @jhamela-nai/server",
+    "build:all": "npm run build:api && npm run build",
     "start": "next start",
-    "lint": "eslint"
+    "start:api": "npm run start --workspace @jhamela-nai/server",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit && npm run typecheck --workspace @jhamela-nai/server",
+    "seed": "npm run seed --workspace @jhamela-nai/server",
+    "test:api": "npm run test:api --workspace @jhamela-nai/server",
+    "test:routes": "npm run smoke --workspace @jhamela-nai/server",
+    "test:e2e": "node scripts/e2e.mjs"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.9.1",
+    "@tanstack/react-query": "^5.104.1",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.4.0",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^4.2.1",
+    "lucide-react": "^1.52.0",
+    "motion": "^14.0.0",
     "next": "16.3.8",
+    "next-themes": "^0.4.6",
+    "radix-ui": "^1.6.7",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "react-hook-form": "^7.89.0",
+    "recharts": "^3.10.1",
+    "sonner": "^2.0.8",
+    "tailwind-merge": "^3.7.0",
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -19,8 +50,10 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
+    "concurrently": "^10.0.5",
     "eslint": "^9",
     "eslint-config-next": "16.3.8",
+    "puppeteer-core": "^25.12.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

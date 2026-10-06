@@ -1,26 +1,426 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ==========================================================================
+   Jhamela Nai — Design System
+   Brand: "Leher" (jade) primary + "Komola" (saffron) accent on warm neutrals.
+   ========================================================================== */
+
+@theme {
+  /* ---- Type ------------------------------------------------------------ */
+  --font-sans: var(--font-latin), var(--font-bangla), ui-sans-serif, system-ui,
+    -apple-system, "Segoe UI", sans-serif;
+  --font-bangla: var(--font-bangla), var(--font-latin), sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", "Menlo", monospace;
+
+  --text-2xs: 0.6875rem;
+  --text-2xs--line-height: 1rem;
+
+  /* ---- Brand ramp: Leher (jade) ---------------------------------------- */
+  --color-brand-50: #ecfdf6;
+  --color-brand-100: #d1fae7;
+  --color-brand-200: #a7f3d4;
+  --color-brand-300: #6ee7bb;
+  --color-brand-400: #34d3a1;
+  --color-brand-500: #12b886;
+  --color-brand-600: #059669;
+  --color-brand-700: #047857;
+  --color-brand-800: #065f46;
+  --color-brand-900: #064e3b;
+  --color-brand-950: #022c22;
+
+  /* ---- Accent ramp: Komola (saffron) ------------------------------------ */
+  --color-accent-50: #fff8ed;
+  --color-accent-100: #ffefd4;
+  --color-accent-200: #ffdbab;
+  --color-accent-300: #ffc074;
+  --color-accent-400: #ff9f38;
+  --color-accent-500: #fb800c;
+  --color-accent-600: #ed6105;
+  --color-accent-700: #c64409;
+  --color-accent-800: #9e350f;
+  --color-accent-900: #7f2d11;
+  --color-accent-950: #461404;
+
+  /* ---- Neutrals: warm-tinted "Kagaj" ------------------------------------ */
+  --color-ink-0: #ffffff;
+  --color-ink-25: #fcfbfa;
+  --color-ink-50: #f8f7f5;
+  --color-ink-100: #f1efec;
+  --color-ink-200: #e6e3de;
+  --color-ink-300: #d5d1ca;
+  --color-ink-400: #a8a29a;
+  --color-ink-500: #7b746c;
+  --color-ink-600: #5c564f;
+  --color-ink-700: #45403a;
+  --color-ink-800: #2b2824;
+  --color-ink-850: #211f1c;
+  --color-ink-900: #1a1815;
+  --color-ink-950: #121110;
+
+  /* ---- Semantic (light defaults) ---------------------------------------- */
+  --color-background: var(--color-ink-25);
+  --color-surface: var(--color-ink-0);
+  --color-surface-muted: var(--color-ink-50);
+  --color-foreground: var(--color-ink-900);
+  --color-muted-foreground: var(--color-ink-500);
+  --color-faint-foreground: var(--color-ink-400);
+  --color-border: var(--color-ink-200);
+  --color-input: var(--color-ink-300);
+  --color-ring: var(--color-brand-500);
+  --color-primary: var(--color-brand-600);
+  --color-primary-foreground: #ffffff;
+  --color-primary-soft: var(--color-brand-50);
+  --color-accent-soft: var(--color-accent-50);
+  --color-destructive: #dc2626;
+  --color-destructive-soft: #fef2f2;
+  --color-success: var(--color-brand-600);
+  --color-warning: var(--color-accent-500);
+
+  /* ---- Elevation -------------------------------------------------------- */
+  --shadow-xs: 0 1px 2px 0 rgb(26 24 21 / 0.04);
+  --shadow-sm: 0 1px 3px 0 rgb(26 24 21 / 0.06), 0 1px 2px -1px rgb(26 24 21 / 0.06);
+  --shadow-md: 0 4px 12px -2px rgb(26 24 21 / 0.08), 0 2px 4px -2px rgb(26 24 21 / 0.05);
+  --shadow-lg: 0 12px 32px -8px rgb(26 24 21 / 0.12), 0 4px 8px -4px rgb(26 24 21 / 0.06);
+  --shadow-brand: 0 8px 24px -8px rgb(5 150 105 / 0.45);
+
+  /* ---- Motion ----------------------------------------------------------- */
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ---- Radius ----------------------------------------------------------- */
+  --radius-xs: 0.3125rem;
+  --radius-sm: 0.4375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.875rem;
+  --radius-xl: 1.125rem;
+  --radius-2xl: 1.5rem;
+
+  /* ---- Layout ----------------------------------------------------------- */
+  --spacing-header: 3.75rem;
+  --container-page: 76rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ==========================================================================
+   Dark theme — deliberately re-tuned, not inverted.
+   Surfaces step *up* in lightness, borders gain contrast, brand lifts.
+   ========================================================================== */
+@layer base {
+  .dark {
+    --color-background: #0c0e10;
+    --color-surface: #14171a;
+    --color-surface-muted: #191d21;
+    --color-foreground: #eceef0;
+    --color-muted-foreground: #9aa3ad;
+    --color-faint-foreground: #6b7480;
+    --color-border: #262b31;
+    --color-input: #343a42;
+    --color-ring: var(--color-brand-400);
+    --color-primary: var(--color-brand-400);
+    --color-primary-foreground: #062b21;
+    --color-primary-soft: #0d2a22;
+    --color-accent-soft: #2a1c0c;
+    --color-destructive: #f87171;
+    --color-destructive-soft: #2a1414;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.4);
+    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.5), 0 1px 2px -1px rgb(0 0 0 / 0.4);
+    --shadow-md: 0 4px 12px -2px rgb(0 0 0 / 0.55), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+    --shadow-lg: 0 12px 32px -8px rgb(0 0 0 / 0.65), 0 4px 8px -4px rgb(0 0 0 / 0.5);
+    --shadow-brand: 0 8px 24px -8px rgb(18 184 134 / 0.35);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv02", "cv03", "cv04", "ss01";
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overscroll-behavior-y: none;
+  }
+
+  /* Bangla glyphs need a hair more line-height to avoid clipping matras */
+  :lang(bn),
+  .font-bangla {
+    line-height: 1.75;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--color-primary) 24%, transparent);
+    color: var(--color-foreground);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+    border-radius: var(--radius-xs);
+  }
+
+  /* Numeric inputs: hide spinners, we provide our own steppers */
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  /* Scrollbars */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--color-border);
+    border-radius: 999px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-ink-400);
+    background-clip: content-box;
+  }
+}
+
+@layer components {
+  .container-page {
+    width: 100%;
+    margin-inline: auto;
+    max-width: var(--container-page);
+    padding-inline: 1rem;
+  }
+  @media (min-width: 640px) {
+    .container-page {
+      padding-inline: 1.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container-page {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* Subtle grain overlay — gives the warm neutral background some texture */
+  .surface-grain {
+    position: relative;
+    isolation: isolate;
+  }
+  .surface-grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.4;
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      color-mix(in oklab, var(--color-ink-900) 8%, transparent) 1px,
+      transparent 0
+    );
+    background-size: 22px 22px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+  }
+  .dark .surface-grain::before {
+    opacity: 0.35;
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      color-mix(in oklab, var(--color-foreground) 10%, transparent) 1px,
+      transparent 0
+    );
+  }
+
+  .focus-ring {
+    @apply outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Radix state animations (accordion + overlays) */
+  @keyframes accordion-down {
+    from {
+      height: 0;
+      opacity: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+      opacity: 1;
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+      opacity: 1;
+    }
+    to {
+      height: 0;
+      opacity: 0;
+    }
+  }
+  @keyframes jn-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes jn-zoom-in {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+  @keyframes jn-sheet-in-right {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  @keyframes jn-sheet-in-bottom {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  @keyframes jn-rise {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-accordion-down {
+    animation: accordion-down 220ms var(--ease-out-quint);
+  }
+  .animate-accordion-up {
+    animation: accordion-up 180ms var(--ease-out-quint);
+  }
+  .animate-jn-fade-in {
+    animation: jn-fade-in 180ms ease-out;
+  }
+  .animate-jn-rise {
+    animation: jn-rise 420ms var(--ease-out-quint) both;
+  }
+  .data-\[state\=open\]\:animate-jn-zoom-in[data-state="open"] {
+    animation: jn-zoom-in 200ms var(--ease-out-quint);
+  }
+  .data-\[state\=open\]\:animate-jn-fade-in[data-state="open"] {
+    animation: jn-fade-in 180ms ease-out;
+  }
+  .data-\[state\=open\]\:animate-sheet-in-right[data-state="open"] {
+    animation: jn-sheet-in-right 280ms var(--ease-out-quint);
+  }
+  .data-\[state\=open\]\:animate-sheet-in-bottom[data-state="open"] {
+    animation: jn-sheet-in-bottom 300ms var(--ease-out-quint);
+  }
+  .data-\[state\=closed\]\:animate-jn-fade-out[data-state="closed"] {
+    animation: jn-fade-in 150ms ease-out reverse;
+  }
+
+  /* Hides content visually but keeps it for screen readers */
+  .sr-only-focusable:not(:focus):not(:focus-within) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  @keyframes jn-shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  .skeleton {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-surface-muted);
+  }
+  .skeleton::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in oklab, var(--color-foreground) 6%, transparent),
+      transparent
+    );
+    animation: jn-shimmer 1.6s infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+    body {
+      background: #fff;
+      color: #000;
+    }
+  }
 }
