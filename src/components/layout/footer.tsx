@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Code2, Heart, Mail } from "lucide-react";
+import { Code2, Mail } from "lucide-react";
 
 import { LogoMark } from "@/components/layout/logo";
 import { FOOTER_LINKS, SITE } from "@/lib/site";
@@ -98,9 +98,19 @@ export function Footer() {
           <p className="text-xs text-faint-foreground">
             © {year} {SITE.nameBn}. সর্বস্বত্ব সংরক্ষিত।
           </p>
+          <p className="text-xs text-faint-foreground">
+            Creator{" "}
+            <a
+              href="https://www.facebook.com/sarkrakib/"
+              target="_blank"
+              className="text-xs text-faint-foreground underline"
+            >
+              Rakib Sarker
+            </a>
+          </p>
           <p className="flex items-center gap-1.5 text-xs text-faint-foreground">
             বাংলাদেশে তৈরি
-            <Heart className="size-3.5 text-accent" aria-hidden />
+            {/* <Heart className="size-3.5 text-accent" aria-hidden /> */}
             <span className="sr-only">প্রেম সহ</span>
             <span aria-hidden>·</span>
             {CATEGORIES.length}টি ক্যাটাগরি

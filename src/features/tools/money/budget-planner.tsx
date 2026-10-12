@@ -57,9 +57,7 @@ export function BudgetPlanner() {
 
   const rows = React.useMemo(
     () =>
-      state.lines
-        .map((line) => ({ ...line, value: Math.max(0, parseNumber(line.amount)) }))
-        .filter((line) => line.name.trim().length > 0 || line.value > 0),
+      state.lines.map((line) => ({ ...line, value: Math.max(0, parseNumber(line.amount)) })),
     [state.lines],
   );
 

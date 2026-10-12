@@ -16,6 +16,7 @@ import { useAuth } from "@/features/auth/auth-provider";
 import { cn, initialsOf } from "@/lib/utils";
 
 const DESKTOP_NAV = [
+  { href: "/", label: "হোম" },
   { href: "/tools", label: "সব টুল" },
   { href: "/tools/category/money", label: "ক্যাটাগরি", hasMenu: true },
   { href: "/how-it-works", label: "কীভাবে কাজ করে" },
@@ -48,7 +49,8 @@ export function Navbar() {
   }
 
   function isActive(href: string) {
-    if (href === "/tools") return pathname === "/tools" || pathname === "/";
+    if (href === "/") return pathname === "/";
+    if (href === "/tools") return pathname === "/tools";
     return pathname.startsWith(href);
   }
 

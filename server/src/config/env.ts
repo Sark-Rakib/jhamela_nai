@@ -26,6 +26,12 @@ const schema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
   PORT: z.coerce.number().int().positive().default(4000),
   MONGODB_URI: z.string().min(1, "MONGODB_URI is required"),
+  /**
+   * Database to use when `MONGODB_URI` has no path of its own. Without it a
+   * path-less Atlas URI silently connects to the default `test` database and
+   * every collection lands in the wrong place. A path in the URI always wins.
+   */
+  MONGODB_DB: z.string().trim().min(1).default("jhamela_nai"),
   JWT_SECRET: z.string().min(16, "JWT_SECRET must be at least 16 characters"),
   JWT_EXPIRES_IN: z.string().default("7d"),
   /** One origin or a comma-separated list — cookies require exact matches. */

@@ -20,12 +20,16 @@ export const registerSchema = z.object({
   name: z.string().trim().min(2, "নাম কমপক্ষে ২ অক্ষরের").max(60, "নাম অনেক লম্বা"),
   email,
   password,
-  /** Optional Bangladeshi mobile number, normalised to digits only. */
+  /** Optional Bangladeshi mobile number, normalised to 11 digits (01XXXXXXXXX). */
   phone: z
     .string()
     .trim()
-    .transform((value) => value.replace(/[\s-]/g, ""))
+    .transform((value) =>
+      // Accept "+88"/"880" prefixes and Bengali digits like the client does.
+      value.replace(/[০-৯]/g, (digit) => String("০১২৩৪৫৬৭৮৯".indexOf(digit))).replace(/[^\d]/g, ""),
+    )
     .optional()
+    .transform((value) => (value ? value.replace(/^88(?=01)/, "") : value))
     .refine((value) => !value || /^01[3-9]\d{8}$/.test(value), "সঠিক মোবাইল নম্বর দিন (01XXXXXXXXX)"),
 });
 

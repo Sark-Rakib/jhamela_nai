@@ -64,7 +64,10 @@ export function CommandSearch({ open, onOpenChange }: CommandDialogProps) {
     if (!intent?.best) return results;
     const winner = intent.best.tool;
     if (results[0]?.slug === winner.slug) return results;
-    return [winner, ...results.filter((tool) => tool.slug !== winner.slug)].slice(0, 7);
+    return [
+      winner,
+      ...results.filter((tool) => tool.slug !== winner.slug),
+    ].slice(0, 7);
   }, [intent, results]);
 
   const [lastQuery, setLastQuery] = React.useState(debouncedQuery);
@@ -74,11 +77,14 @@ export function CommandSearch({ open, onOpenChange }: CommandDialogProps) {
   }
 
   const suggestions = intent?.best
-    ? [intent.best.tool, ...intent.alternatives.map((match) => match.tool)].filter(
-        (tool, index, array) => array.findIndex((item) => item.slug === tool.slug) === index,
+    ? [
+        intent.best.tool,
+        ...intent.alternatives.map((match) => match.tool),
+      ].filter(
+        (tool, index, array) =>
+          array.findIndex((item) => item.slug === tool.slug) === index,
       )
     : [];
-
 
   function go(tool: ToolDefinition) {
     trackSearch(query, tool.slug);
@@ -89,7 +95,9 @@ export function CommandSearch({ open, onOpenChange }: CommandDialogProps) {
   function handleKeyDown(event: React.KeyboardEvent) {
     if (event.key === "ArrowDown") {
       event.preventDefault();
-      setActiveIndex((index) => (ordered.length ? (index + 1) % ordered.length : 0));
+      setActiveIndex((index) =>
+        ordered.length ? (index + 1) % ordered.length : 0,
+      );
     } else if (event.key === "ArrowUp") {
       event.preventDefault();
       setActiveIndex((index) =>
@@ -106,17 +114,22 @@ export function CommandSearch({ open, onOpenChange }: CommandDialogProps) {
       <DialogPrimitive.Portal>
         <DialogPrimitive.Overlay className="fixed inset-0 z-[80] bg-ink-950/50 backdrop-blur-[3px] data-[state=open]:animate-jn-fade-in" />
         <DialogPrimitive.Content
-          className="fixed left-1/2 top-[12dvh] z-[80] flex max-h-[76dvh] w-[calc(100vw-1.5rem)] max-w-xl -translate-x-1/2 flex-col overflow-hidden rounded-xl border border-border bg-surface shadow-lg focus:outline-none data-[state=open]:animate-jn-zoom-in"
+          className="fixed left-1/2 top-1/3 z-[80] flex max-h-[76dvh] w-[calc(100vw-1.5rem)] max-w-xl -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-xl border border-border bg-surface shadow-lg focus:outline-none transform-gpu data-[state=open]:animate-jn-command-in data-[state=closed]:animate-jn-fade-out"
           onOpenAutoFocus={(event) => event.preventDefault()}
           onKeyDown={handleKeyDown}
         >
-          <DialogPrimitive.Title className="sr-only">টুল খুঁজুন</DialogPrimitive.Title>
+          <DialogPrimitive.Title className="sr-only">
+            টুল খুঁজুন
+          </DialogPrimitive.Title>
           <DialogPrimitive.Description className="sr-only">
             যেকোনো টুলের নাম বা আপনার সমস্যা লিখে খুঁজুন
           </DialogPrimitive.Description>
 
           <div className="flex items-center gap-2.5 border-b border-border px-4 py-3">
-            <Search className="size-4 shrink-0 text-muted-foreground" aria-hidden />
+            <Search
+              className="size-4 shrink-0 text-muted-foreground"
+              aria-hidden
+            />
             <input
               ref={inputRef}
               value={query}
@@ -128,7 +141,11 @@ export function CommandSearch({ open, onOpenChange }: CommandDialogProps) {
               spellCheck={false}
               aria-label="টুল খুঁজুন"
               aria-controls="command-results"
-              aria-activedescendant={ordered[activeIndex] ? `cmd-${ordered[activeIndex].slug}` : undefined}
+              aria-activedescendant={
+                ordered[activeIndex]
+                  ? `cmd-${ordered[activeIndex].slug}`
+                  : undefined
+              }
             />
             {query ? (
               <button
@@ -146,7 +163,10 @@ export function CommandSearch({ open, onOpenChange }: CommandDialogProps) {
             )}
           </div>
 
-          <div id="command-results" className="min-h-0 flex-1 overflow-y-auto p-2">
+          <div
+            id="command-results"
+            className="min-h-0 flex-1 overflow-y-auto p-2"
+          >
             <AnimatePresence mode="wait" initial={false}>
               {!query.trim() ? (
                 <motion.div
@@ -162,7 +182,11 @@ export function CommandSearch({ open, onOpenChange }: CommandDialogProps) {
                       {TOOLS.filter((tool) => tool.popular)
                         .slice(0, 6)
                         .map((tool) => (
-                          <QuickTile key={tool.slug} tool={tool} onSelect={go} />
+                          <QuickTile
+                            key={tool.slug}
+                            tool={tool}
+                            onSelect={go}
+                          />
                         ))}
                     </div>
                   </Section>
@@ -190,9 +214,12 @@ export function CommandSearch({ open, onOpenChange }: CommandDialogProps) {
                   exit={{ opacity: 0 }}
                   className="flex flex-col items-center gap-2 px-4 py-10 text-center"
                 >
-                  <p className="text-sm font-medium text-foreground">কিছু পাওয়া যায়নি</p>
+                  <p className="text-sm font-medium text-foreground">
+                    কিছু পাওয়া যায়নি
+                  </p>
                   <p className="max-w-xs text-xs leading-relaxed text-muted-foreground">
-                    অন্য কিছু লিখে দেখুন — যেমন “বাজেট”, “CV”, “invoice”, “CGPA” বা টুলের নাম।
+                    অন্য কিছু লিখে দেখুন — যেমন “বাজেট”, “CV”, “invoice”, “CGPA”
+                    বা টুলের নাম।
                   </p>
                   <Link
                     href="/tools"
@@ -232,7 +259,9 @@ export function CommandSearch({ open, onOpenChange }: CommandDialogProps) {
                           onClick={() => go(tool)}
                           className={cn(
                             "flex w-full items-center gap-3 rounded-lg px-2.5 py-2.5 text-left transition-colors",
-                            active ? "bg-surface-muted" : "hover:bg-surface-muted/60",
+                            active
+                              ? "bg-surface-muted"
+                              : "hover:bg-surface-muted/60",
                           )}
                         >
                           <span
@@ -241,7 +270,10 @@ export function CommandSearch({ open, onOpenChange }: CommandDialogProps) {
                               ACCENT_TILE[tool.accent],
                             )}
                           >
-                            <ToolIcon name={tool.icon} className="size-[18px]" />
+                            <ToolIcon
+                              name={tool.icon}
+                              className="size-[18px]"
+                            />
                           </span>
                           <span className="min-w-0 flex-1">
                             <span className="flex items-center gap-1.5">
@@ -260,7 +292,10 @@ export function CommandSearch({ open, onOpenChange }: CommandDialogProps) {
                             </span>
                           </span>
                           {active ? (
-                            <CornerDownLeft className="size-3.5 shrink-0 text-faint-foreground" aria-hidden />
+                            <CornerDownLeft
+                              className="size-3.5 shrink-0 text-faint-foreground"
+                              aria-hidden
+                            />
                           ) : null}
                         </button>
                       </li>
@@ -278,7 +313,10 @@ export function CommandSearch({ open, onOpenChange }: CommandDialogProps) {
               className="flex shrink-0 items-center justify-between gap-2 border-t border-border bg-surface-muted/60 px-4 py-2.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
             >
               <span className="truncate">
-                খুলুন: <span className="font-medium text-foreground">{ordered[activeIndex].nameBn}</span>
+                খুলুন:{" "}
+                <span className="font-medium text-foreground">
+                  {ordered[activeIndex].nameBn}
+                </span>
               </span>
               <span className="flex shrink-0 items-center gap-1 font-medium text-primary">
                 খুলুন
@@ -292,7 +330,13 @@ export function CommandSearch({ open, onOpenChange }: CommandDialogProps) {
   );
 }
 
-function Section({ label, children }: { label: string; children: React.ReactNode }) {
+function Section({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) {
   return (
     <div>
       <p className="mb-2 text-[11px] font-medium uppercase tracking-wide text-faint-foreground">
@@ -316,10 +360,17 @@ function QuickTile({
       onClick={() => onSelect(tool)}
       className="flex items-center gap-2 rounded-lg border border-border px-2.5 py-2 text-left transition-colors hover:border-ink-300 hover:bg-surface-muted"
     >
-      <span className={cn("grid size-7 shrink-0 place-items-center rounded-md", ACCENT_TILE[tool.accent])}>
+      <span
+        className={cn(
+          "grid size-7 shrink-0 place-items-center rounded-md",
+          ACCENT_TILE[tool.accent],
+        )}
+      >
         <ToolIcon name={tool.icon} className="size-3.5" />
       </span>
-      <span className="truncate text-xs font-medium text-foreground">{tool.nameBn}</span>
+      <span className="truncate text-xs font-medium text-foreground">
+        {tool.nameBn}
+      </span>
     </button>
   );
 }

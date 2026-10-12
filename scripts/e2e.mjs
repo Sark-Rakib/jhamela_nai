@@ -235,6 +235,18 @@ try {
   const restoredIncome = await page.$eval("#income", (el) => el.value);
   log("cloud copy restored after reload", Number(restoredIncome) === 61000, `income=${restoredIncome}`);
 
+  // A hard refresh must re-hydrate the session from the cookie, not log out.
+  const afterReload = await api("/auth/me");
+  log(
+    "session survives a page refresh",
+    afterReload.status === 200 && afterReload.data?.data?.user?.email === EMAIL,
+    `status=${afterReload.status}`,
+  );
+  log(
+    "navbar still signed in after refresh",
+    Boolean(await page.$('a[aria-label="লগআউট"], button[aria-label="লগআউট"]')),
+  );
+
   // A second save pushes the previous value into history.
   await typeStable("#income", "62000");
   await clickButtonByText("সংরক্ষণ|সিঙ্ক");
@@ -281,6 +293,13 @@ try {
     `clicked=${clickedLogout} status=${me.status}`,
   );
   log("navbar shows login link after logout", Boolean(await page.$('a[href="/login"]')));
+
+  await page.goto(`${WEB}/dashboard`, { waitUntil: "networkidle0" });
+  const redirected = await page
+    .waitForFunction(() => location.pathname === "/login", { timeout: 10000 })
+    .then(() => true)
+    .catch(() => false);
+  log("guest visiting /dashboard is redirected to /login", redirected, page.url());
 
   // ── 7. Wrong password is rejected ─────────────────────────────────────────
   await page.goto(`${WEB}/login`, { waitUntil: "networkidle0" });

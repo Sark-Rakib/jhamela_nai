@@ -23,6 +23,7 @@ export const SITE = {
 } as const;
 
 export const NAV_LINKS = [
+  { href: "/", label: "হোম", labelEn: "Home" },
   { href: "/tools", label: "সব টুল", labelEn: "Tools" },
   { href: "/tools?category=money", label: "ক্যাটাগরি", labelEn: "Categories" },
   { href: "/how-it-works", label: "কীভাবে কাজ করে", labelEn: "How It Works" },
@@ -44,11 +45,11 @@ export const FOOTER_LINKS: { title: string; links: { href: string; label: string
   {
     title: "ক্যাটাগরি",
     links: [
-      { href: "/tools/category/money", label: "💰 টাকা ও হিসাব" },
-      { href: "/tools/category/career", label: "💼 চাকরি ও ক্যারিয়ার" },
-      { href: "/tools/category/documents", label: "📄 ডকুমেন্ট" },
-      { href: "/tools/category/planning", label: "✈️ পরিকল্পনা" },
-      { href: "/tools/category/student", label: "🎓 শিক্ষার্থী" },
+      { href: "/tools/category/money", label: "টাকা ও হিসাব" },
+      { href: "/tools/category/career", label: "চাকরি ও ক্যারিয়ার" },
+      { href: "/tools/category/documents", label: "ডকুমেন্ট" },
+      { href: "/tools/category/planning", label: "পরিকল্পনা" },
+      { href: "/tools/category/student", label: "শিক্ষার্থী" },
     ],
   },
   {

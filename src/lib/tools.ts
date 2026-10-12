@@ -76,7 +76,7 @@ export const CATEGORIES: CategoryDefinition[] = [
     slug: "money",
     name: "Money",
     nameBn: "টাকা ও হিসাব",
-    emoji: "💰",
+    emoji: "",
     icon: "Wallet",
     description:
       "আয়-ব্যয়ের হিসাব, বাজেট, কিস্তি আর লাভ-ক্ষতি — সব হিসাব এক জায়গায়, মুহূর্তে।",
@@ -151,7 +151,14 @@ export const TOOLS: ToolDefinition[] = [
       "kharcha",
       "bajet",
     ],
-    keywordsBn: ["বাজেট", "আয়", "খরচের হিসাব", "মাসিক আয়", "বাজেট প্ল্যানার", "টাকা হিসাব"],
+    keywordsBn: [
+      "বাজেট",
+      "আয়",
+      "খরচের হিসাব",
+      "মাসিক আয়",
+      "বাজেট প্ল্যানার",
+      "টাকা হিসাব",
+    ],
     seoTitle: "Free Budget Planner Bangladesh — মাসিক বাজেট বানান",
     seoDescription:
       "বিনামূল্যে মাসিক বাজেট প্ল্যানার। আয়, ভাড়া, খাবার, বিল ও সঞ্চয়ের লক্ষ্য দিয়ে পরিষ্কার বাজেট ও খরচের ভাঙ্গন এক মুহূর্তে। ৳ টাকায়, বাংলাদেশের জন্য।",
@@ -202,7 +209,13 @@ export const TOOLS: ToolDefinition[] = [
       "budget tracking",
       "baki hishab",
     ],
-    keywordsBn: ["খরচ", "আয় ব্যয়", "খরচ ট্র্যাকার", "হিসাব রাখা", "প্রতিদিনের খরচ"],
+    keywordsBn: [
+      "খরচ",
+      "আয় ব্যয়",
+      "খরচ ট্র্যাকার",
+      "হিসাব রাখা",
+      "প্রতিদিনের খরচ",
+    ],
     seoTitle: "Free Expense Tracker Bangladesh — প্রতিদিনের খরচের হিসাব",
     seoDescription:
       "বিনামূল্যে expense tracker। প্রতিদিনের আয়-ব্যয় ক্যাটাগরি সহ জমা রাখুন, মাস ফিল্টার করুন, ব্যালেন্স ও ক্যাটাগরি ভাঙ্গন দেখুন। ৳ টাকায় বাংলাদেশের জন্য।",
@@ -345,7 +358,14 @@ export const TOOLS: ToolDefinition[] = [
       "lab",
       "khosti",
     ],
-    keywordsBn: ["লাভ", "ক্ষতি", "মুনাফা", "লাভ ক্ষতি হিসাব", "ব্যবসা", "মার্জিন"],
+    keywordsBn: [
+      "লাভ",
+      "ক্ষতি",
+      "মুনাফা",
+      "লাভ ক্ষতি হিসাব",
+      "ব্যবসা",
+      "মার্জিন",
+    ],
     seoTitle: "Free Profit Loss Calculator Bangladesh — লাভ-ক্ষতি হিসাব",
     seoDescription:
       "বিনামূল্যে profit loss calculator। ক্রয়মূল্য ও বিক্রয়মূল্য দিয়ে লাভ-ক্ষতি, শতকরা হার ও মার্জিন হিসাব করুন। বাংলাদেশের ব্যবসার জন্য।",
@@ -420,7 +440,11 @@ export const TOOLS: ToolDefinition[] = [
           "CV এক পেজের চেয়ে দুই পেজ ভালো। বেশি লেখা থাকলে প্রভাব দেখানো অংশগুলো রাখুন — বিস্তারিত জীবনী নয়।",
       },
     ],
-    related: ["cover-letter-generator", "job-application-generator", "interview-questions"],
+    related: [
+      "cover-letter-generator",
+      "job-application-generator",
+      "interview-questions",
+    ],
   },
   {
     slug: "cover-letter-generator",
@@ -485,7 +509,8 @@ export const TOOLS: ToolDefinition[] = [
       "how to apply",
     ],
     keywordsBn: ["আবেদন", "আবেদন পত্র", "চাকরি আবেদন", "কীভাবে আবেদন"],
-    seoTitle: "Free Job Application Generator Bangladesh — আবেদন পত্র ও চেকলিস্ট",
+    seoTitle:
+      "Free Job Application Generator Bangladesh — আবেদন পত্র ও চেকলিস্ট",
     seoDescription:
       "বিনামূল্যে job application generator। কোম্পানি অনুযায়ী আবেদন ইমেইল, প্রয়োজনীয় ডকুমেন্ট ও আবেদন চেকলিস্ট তৈরি করুন।",
     tips: [
@@ -526,8 +551,15 @@ export const TOOLS: ToolDefinition[] = [
       "aptitude",
       "viva",
     ],
-    keywordsBn: ["ইন্টারভিউ", "সাক্ষাৎকার", "প্রশ্ন", "চাকরির প্রস্তুতি", "ভাইভা"],
-    seoTitle: "Free Interview Question Generator Bangladesh — ইন্টারভিউ প্রস্তুতি",
+    keywordsBn: [
+      "ইন্টারভিউ",
+      "সাক্ষাৎকার",
+      "প্রশ্ন",
+      "চাকরির প্রস্তুতি",
+      "ভাইভা",
+    ],
+    seoTitle:
+      "Free Interview Question Generator Bangladesh — ইন্টারভিউ প্রস্তুতি",
     seoDescription:
       "বিনামূল্যে interview question generator। পোজিশন অনুযায়ী সম্ভাব্য প্রশ্ন, উত্তরের কাঠামো ও ইন্টারভিউয়ের আগের দিনের চেকলিস্ট পান।",
     tips: [
@@ -547,7 +579,11 @@ export const TOOLS: ToolDefinition[] = [
           "হ্যাঁ। 'আমার উত্তর লিখুন' ঘরে নিজের উত্তর লিখে রাখতে পারবেন, ইন্টারভিউর আগে পড়ে নিতে পারবেন।",
       },
     ],
-    related: ["cv-builder", "cover-letter-generator", "job-application-generator"],
+    related: [
+      "cv-builder",
+      "cover-letter-generator",
+      "job-application-generator",
+    ],
   },
 
   /* -------------------------------------------------------------- documents */
@@ -593,7 +629,11 @@ export const TOOLS: ToolDefinition[] = [
           "হ্যাঁ, যত খুশি লাইন যোগ বা মুছে ফেলা যাবে। প্রতিটি লাইনে পরিমাণ, একক দাম ছাড়াও বিবিধ খরচও দেওয়া যায়।",
       },
     ],
-    related: ["quotation-generator", "receipt-generator", "profit-loss-calculator"],
+    related: [
+      "quotation-generator",
+      "receipt-generator",
+      "profit-loss-calculator",
+    ],
   },
   {
     slug: "receipt-generator",
@@ -606,7 +646,13 @@ export const TOOLS: ToolDefinition[] = [
     icon: "ScrollText",
     accent: "accent",
     weight: 84,
-    keywords: ["receipt", "rasid", "money receipt", "acknowledgement", "voucher"],
+    keywords: [
+      "receipt",
+      "rasid",
+      "money receipt",
+      "acknowledgement",
+      "voucher",
+    ],
     keywordsBn: ["রসিদ", "জমার রসিদ", "রসিদ ফরম", "পরিশোধ"],
     seoTitle: "Free Receipt Generator Bangladesh — অনলাইনে রসিদ তৈরি",
     seoDescription:
@@ -666,11 +712,14 @@ export const TOOLS: ToolDefinition[] = [
       },
       {
         question: "কোটেশনে কি লগো বসানো যায়?",
-        answer:
-          "হ্যাঁ, আপনার কোম্পানির লোগো আপলোড করে ব্যবহার করতে পারবেন।",
+        answer: "হ্যাঁ, আপনার কোম্পানির লোগো আপলোড করে ব্যবহার করতে পারবেন।",
       },
     ],
-    related: ["invoice-generator", "receipt-generator", "profit-loss-calculator"],
+    related: [
+      "invoice-generator",
+      "receipt-generator",
+      "profit-loss-calculator",
+    ],
   },
   {
     slug: "image-compressor",
@@ -695,7 +744,13 @@ export const TOOLS: ToolDefinition[] = [
       "png",
       "upay",
     ],
-    keywordsBn: ["ইমেজ কম্প্রেসর", "ছবি ছোট", "ফটো সাইজ", "ইমেজ রেসাইজ", "কমপ্রেস"],
+    keywordsBn: [
+      "ইমেজ কম্প্রেসর",
+      "ছবি ছোট",
+      "ফটো সাইজ",
+      "ইমেজ রেসাইজ",
+      "কমপ্রেস",
+    ],
     seoTitle: "Free Image Compressor Bangladesh — ছবির সাইজ কমান",
     seoDescription:
       "বিনামূল্যে image compressor। JPG ও PNG ছবি কমপ্রেস করে সাইজ কমান, আগে-পরের তুলনা দেখুন এবং ডাউনলোড করুন। ছবি আপলোড হয় না।",
@@ -739,7 +794,13 @@ export const TOOLS: ToolDefinition[] = [
       "document",
       "pdf banano",
     ],
-    keywordsBn: ["পিডিএফ", "PDF বানানো", "ছবি থেকে পিডিএফ", "টেক্সট থেকে পিডিএফ", "কনভার্ট"],
+    keywordsBn: [
+      "পিডিএফ",
+      "PDF বানানো",
+      "ছবি থেকে পিডিএফ",
+      "টেক্সট থেকে পিডিএফ",
+      "কনভার্ট",
+    ],
     seoTitle: "Free PDF Maker Bangladesh — ছবি ও টেক্সট থেকে PDF",
     seoDescription:
       "বিনামূল্যে PDF maker। ছবি, টেক্সট ও পেজ লেআউট থেকে সাজানো PDF তৈরি করুন, পেজ নম্বর দিন এবং ডাউনলোড করুন।",
@@ -833,7 +894,15 @@ export const TOOLS: ToolDefinition[] = [
       "mehendi",
       "ceremony",
     ],
-    keywordsBn: ["অনুষ্ঠান", "বিয়ে", "ওয়েডিং", "পার্টি", "ইফতার", "মেহেংদি", "আয়োজন"],
+    keywordsBn: [
+      "অনুষ্ঠান",
+      "বিয়ে",
+      "ওয়েডিং",
+      "পার্টি",
+      "ইফতার",
+      "মেহেংদি",
+      "আয়োজন",
+    ],
     seoTitle: "Free Event Planner Bangladesh — অনুষ্ঠানের খরচ ও পরিকল্পনা",
     seoDescription:
       "বিনামূল্যে event planner। বিয়ে, ইফতার বা পার্টির সম্পূর্ণ খরচ ক্যাটাগরি করে হিসাব করুন এবং পরিকল্পনার চেকলিস্ট সামলান।",
@@ -876,7 +945,13 @@ export const TOOLS: ToolDefinition[] = [
       "new home",
       "uthao",
     ],
-    keywordsBn: ["উঠানো", "গেলে যাওয়া", "নতুন বাড়ি", "চেকলিস্ট", "স্থানান্তর"],
+    keywordsBn: [
+      "উঠানো",
+      "গেলে যাওয়া",
+      "নতুন বাড়ি",
+      "চেকলিস্ট",
+      "স্থানান্তর",
+    ],
     seoTitle: "Free Moving Checklist Bangladesh — নতুন বাড়িতে উঠানোর চেকলিস্ট",
     seoDescription:
       "বিনামূল্যে moving checklist। উঠানোর আগে, দিনে ও পরের দিনের জন্য আলাদা চেকলিস্ট ও প্যাকিং টিপস পান।",
@@ -952,7 +1027,14 @@ export const TOOLS: ToolDefinition[] = [
       "daily tasks",
       "kaaj",
     ],
-    keywordsBn: ["টুডু", "কাজের তালিকা", "টাস্ক", "পরিকল্পনা", "চেকলিস্ট", "দৈনিক কাজ"],
+    keywordsBn: [
+      "টুডু",
+      "কাজের তালিকা",
+      "টাস্ক",
+      "পরিকল্পনা",
+      "চেকলিস্ট",
+      "দৈনিক কাজ",
+    ],
     seoTitle: "Free To-do Planner Bangladesh — দৈনিক কাজের তালিকা",
     seoDescription:
       "বিনামূল্যে to-do planner। কাজ লিখুন, সময় ও গুরুত্ব দিন, আজকের কাজ দেখুন এবং সম্পন্ন হিসাব দেখুন।",
@@ -964,8 +1046,7 @@ export const TOOLS: ToolDefinition[] = [
     faq: [
       {
         question: "আমার কাজ কি অন্য কারও দেখতে পাবে?",
-        answer:
-          "না। তালিকা শুধু আপনার জন্য। কোনো শেয়ার বা পাবলিক লিংক নেই।",
+        answer: "না। তালিকা শুধু আপনার জন্য। কোনো শেয়ার বা পাবলিক লিংক নেই।",
       },
     ],
     related: ["study-planner", "shopping-list", "moving-checklist"],
@@ -996,7 +1077,15 @@ export const TOOLS: ToolDefinition[] = [
       "semester",
       "transcript",
     ],
-    keywordsBn: ["সিজিপিএ", "জিপিএ", "গ্রেড", "পয়েন্ট", "রেজাল্ট", "সেমিস্টার", "ট্রান্সক্রিপ্ট"],
+    keywordsBn: [
+      "সিজিপিএ",
+      "জিপিএ",
+      "গ্রেড",
+      "পয়েন্ট",
+      "রেজাল্ট",
+      "সেমিস্টার",
+      "ট্রান্সক্রিপ্ট",
+    ],
     seoTitle: "Free CGPA Calculator Bangladesh — GPA ও CGPA হিসাব",
     seoDescription:
       "বিনামূল্যে CGPA calculator। সাবজেক্টভিত্তিক ক্রেডিট ও গ্রেড দিয়ে GPA, ধাপে ধাপে CGPA এবং সেমিস্টার ভিত্তিক হিসাব করুন।",
@@ -1106,7 +1195,8 @@ export const TOOLS: ToolDefinition[] = [
     weight: 76,
     keywords: ["assignment", "deadline", "project", "submission", "thesis"],
     keywordsBn: ["অ্যাসাইনমেন্ট", "অ্যাসাইন্ট", "ডেডলাইন", "প্রজেক্ট", "জমা"],
-    seoTitle: "Free Assignment Planner Bangladesh — অ্যাসাইনমেন্ট ও ডেডলাইন প্ল্যানার",
+    seoTitle:
+      "Free Assignment Planner Bangladesh — অ্যাসাইনমেন্ট ও ডেডলাইন প্ল্যানার",
     seoDescription:
       "বিনামূল্যে assignment planner। রিসার্চ, ড্রাফট, রিভিশন ও জমা — ধাপে ধাপে ডেডলাইন পরিকল্পনা করুন এবং অগ্রগতি দেখুন।",
     tips: [
@@ -1134,25 +1224,30 @@ export const TOOL_BY_SLUG: Record<string, ToolDefinition> = Object.fromEntries(
 export const CATEGORY_BY_SLUG: Record<string, CategoryDefinition> =
   Object.fromEntries(CATEGORIES.map((category) => [category.slug, category]));
 
-export const POPULAR_TOOLS: ToolDefinition[] = TOOLS.filter((tool) => tool.popular).sort(
-  (a, b) => b.weight - a.weight,
-);
+export const POPULAR_TOOLS: ToolDefinition[] = TOOLS.filter(
+  (tool) => tool.popular,
+).sort((a, b) => b.weight - a.weight);
 
-export const FEATURED_TOOLS: ToolDefinition[] = TOOLS.filter((tool) => tool.featured).sort(
-  (a, b) => b.weight - a.weight,
-);
+export const FEATURED_TOOLS: ToolDefinition[] = TOOLS.filter(
+  (tool) => tool.featured,
+).sort((a, b) => b.weight - a.weight);
 
 export function toolsByCategory(slug: string): ToolDefinition[] {
-  return TOOLS.filter((tool) => tool.category === slug).sort((a, b) => b.weight - a.weight);
+  return TOOLS.filter((tool) => tool.category === slug).sort(
+    (a, b) => b.weight - a.weight,
+  );
 }
 
 export function relatedTools(slug: string): ToolDefinition[] {
   const tool = TOOL_BY_SLUG[slug];
   if (!tool) return [];
-  const explicit = tool.related.map((related) => TOOL_BY_SLUG[related]).filter(Boolean);
+  const explicit = tool.related
+    .map((related) => TOOL_BY_SLUG[related])
+    .filter(Boolean);
   if (explicit.length >= 3) return explicit.slice(0, 3);
   const fallback = TOOLS.filter(
-    (candidate) => candidate.category === tool.category && candidate.slug !== slug,
+    (candidate) =>
+      candidate.category === tool.category && candidate.slug !== slug,
   );
   return [...explicit, ...fallback].slice(0, 3);
 }

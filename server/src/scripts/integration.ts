@@ -150,6 +150,43 @@ async function main() {
   const anonymous = await call("/api/tools/budget-planner/state");
   check("anonymous tool-state read → 401", anonymous.status === 401, `status=${anonymous.status}`);
 
+  // ── Per-user data isolation ─────────────────────────────────────────────────
+  const primaryCookie = cookie;
+  cookie = "";
+
+  const second = {
+    name: "দ্বিতীয় ব্যবহারকারী",
+    email: "second@jhamelanai.com",
+    password: "SecondPass123",
+  };
+  const secondRegister = await call("/api/auth/register", { body: second });
+  check("second account registers", secondRegister.status === 201, `status=${secondRegister.status}`);
+
+  const secondSave = await call("/api/tools/budget-planner/state", {
+    auth: true,
+    body: { state: { income: 11111, expense: 111 } },
+  });
+  check("second account saves the same tool slug", secondSave.status === 200, `status=${secondSave.status}`);
+
+  const secondFetch = await call("/api/tools/budget-planner/state", { auth: true });
+  const secondIncome = (secondFetch.body.data as { state?: { income?: number } })?.state?.income;
+  check("second account reads only its own state", secondIncome === 11111, `income=${secondIncome}`);
+
+  cookie = primaryCookie;
+  const primaryFetch = await call("/api/tools/budget-planner/state", { auth: true });
+  const primaryIncome = (primaryFetch.body.data as { state?: { income?: number } })?.state?.income;
+  check("first account state is untouched by the second", primaryIncome === 55000, `income=${primaryIncome}`);
+
+  const primaryList = await call("/api/tools/states", { auth: true });
+  const primaryItems = (primaryList.body.data as { items?: unknown[] })?.items ?? [];
+  check("dashboard listing stays per-user", primaryItems.length === 1, `items=${primaryItems.length}`);
+
+  // A forged cookie must never authenticate: the user is re-read from the DB.
+  const forged = await fetch(`${BASE}/api/tools/states`, {
+    headers: { Accept: "application/json", Cookie: "jn_token=forged.signature.value" },
+  });
+  check("forged session cookie → 401", forged.status === 401, `status=${forged.status}`);
+
   // ── Analytics ───────────────────────────────────────────────────────────────
   const batch = await call("/api/analytics/events", {
     auth: true,

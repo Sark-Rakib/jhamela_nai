@@ -10,6 +10,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   ArrowRight,
   CloudOff,
@@ -81,6 +82,7 @@ function toolFor(slug: string): ToolDefinition | undefined {
 
 export function Dashboard() {
   const { user, isLoading: authLoading, isOffline } = useAuth();
+  const router = useRouter();
   const [cloud, setCloud] = React.useState<CloudItem[]>([]);
   const [local, setLocal] = React.useState<LocalItem[]>([]);
   // Starts true: the first authenticated paint is a fetch, not empty state.
@@ -88,6 +90,15 @@ export function Dashboard() {
   const [error, setError] = React.useState("");
   // Bumped by the refresh button to trigger a re-fetch without an effect.
   const [refreshToken, setRefreshToken] = React.useState(0);
+
+  // The session cookie is host-only for the API origin, so this page cannot be
+  // guarded on the server — `/auth/me` is the source of truth. Guests are sent
+  // to the login form; if the API itself is unreachable they keep the local
+  // browser copy instead (no private data is ever rendered either way).
+  React.useEffect(() => {
+    if (authLoading || user || isOffline) return;
+    router.replace("/login?next=%2Fdashboard");
+  }, [authLoading, user, isOffline, router]);
 
   React.useEffect(() => {
     if (!user) return;
@@ -154,6 +165,16 @@ export function Dashboard() {
   }
 
   if (!user) {
+    // Reachable only while offline — otherwise the effect above is redirecting.
+    if (!isOffline) {
+      return (
+        <p className="flex items-center gap-2 text-sm text-muted-foreground">
+          <Loader2 className="size-4 animate-spin" aria-hidden />
+          লগইন পেজে নিয়ে যাওয়া হচ্ছে…
+        </p>
+      );
+    }
+
     return (
       <div className="rounded-2xl border border-dashed border-border bg-surface-muted p-6">
         <h2 className="text-lg font-semibold">লগইন করলে কাজ সব ডিভাইসে পাবেন</h2>
