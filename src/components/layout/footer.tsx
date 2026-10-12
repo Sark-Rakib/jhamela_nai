@@ -42,7 +42,7 @@ export function Footer() {
                 <Mail className="size-4" aria-hidden />
               </a>
               <a
-                href="https://github.com/jhamelanai/jhamela-nai"
+                href="https://github.com/Sark-Rakib/jhamela_nai"
                 target="_blank"
                 rel="noreferrer noopener"
                 className="inline-flex size-9 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:text-foreground focus-ring"
