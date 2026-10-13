@@ -71,4 +71,7 @@ export const FOOTER_LINKS: { title: string; links: { href: string; label: string
   },
 ];
 
-export const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4000/api";
+// The API ships inside the Next app (see `src/pages/api/[...path].ts`), so the
+// same-origin path works everywhere. Local dev can still point at the
+// standalone Express server via `NEXT_PUBLIC_API_URL`.
+export const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "/api";

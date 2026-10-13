@@ -24,7 +24,7 @@ const DESKTOP_NAV = [
 ];
 
 export function Navbar() {
-  const pathname = usePathname();
+  const pathname = usePathname() ?? "/";
   const [searchOpen, setSearchOpen] = React.useState(false);
   const [menuOpen, setMenuOpen] = React.useState(false);
   const { user, isAuthenticated, logout } = useAuth();

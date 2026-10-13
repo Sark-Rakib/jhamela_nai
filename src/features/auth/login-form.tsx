@@ -28,7 +28,7 @@ export function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { login, isOffline } = useAuth();
-  const nextPath = searchParams.get("next") || "/dashboard";
+  const nextPath = searchParams?.get("next") || "/dashboard";
 
   const {
     register,

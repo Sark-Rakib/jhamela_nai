@@ -45,7 +45,7 @@ export function RegisterForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { register: registerUser, isOffline } = useAuth();
-  const nextPath = searchParams.get("next") || "/dashboard";
+  const nextPath = searchParams?.get("next") || "/dashboard";
 
   const {
     register,
