@@ -1,12 +1,12 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "npm run build",
-  "installCommand": "npm install",
   "framework": "nextjs",
-  "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "https://jhamela-nai-server.vercel.app/api/:path*"
+  "buildCommand": "npm run build:api && npm run build",
+  "installCommand": "npm install",
+  "functions": {
+    "api/[...path].ts": {
+      "includeFiles": "server/dist/**",
+      "maxDuration": 30
     }
-  ]
+  }
 }
