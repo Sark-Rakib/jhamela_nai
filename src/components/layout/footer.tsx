@@ -103,7 +103,7 @@ export function Footer() {
             <a
               href="https://www.facebook.com/sarkrakib/"
               target="_blank"
-              className="text-xs text-faint-foreground underline"
+              className="text-xs text-faint-foreground underline hover:text-brand-800"
             >
               Rakib Sarker
             </a>
